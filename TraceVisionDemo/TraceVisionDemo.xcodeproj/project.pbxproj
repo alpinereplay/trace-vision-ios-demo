@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B33C2A952B745917005D8A3F /* TraceVisionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */; };
+		B33C2A972B745917005D8A3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A962B745917005D8A3F /* ContentView.swift */; };
+		B33C2A992B745918005D8A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33C2A982B745918005D8A3F /* Assets.xcassets */; };
+		B33C2A9C2B745918005D8A3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33C2A9B2B745918005D8A3F /* Preview Assets.xcassets */; };
+		B33C2AA72B745F05005D8A3F /* TraceFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AA42B745F05005D8A3F /* TraceFonts.swift */; };
+		B33C2AA82B745F05005D8A3F /* TraceButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AA52B745F05005D8A3F /* TraceButtonStyles.swift */; };
+		B33C2AA92B745F05005D8A3F /* TraceColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AA62B745F05005D8A3F /* TraceColors.swift */; };
+		B33C2AAB2B745F40005D8A3F /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AAA2B745F40005D8A3F /* StringExt.swift */; };
+		B33C2AAE2B7460BB005D8A3F /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AAD2B7460BB005D8A3F /* ViewExt.swift */; };
+		B33C2AB02B7460FC005D8A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AAF2B7460FC005D8A3F /* AppDelegate.swift */; };
+		B33C2AB22B746184005D8A3F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AB12B746184005D8A3F /* Toast.swift */; };
+		B33C2AB62B746222005D8A3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AB32B746221005D8A3F /* Utils.swift */; };
+		B33C2AB72B746222005D8A3F /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AB42B746221005D8A3F /* ColorExt.swift */; };
+		B33C2AB82B746222005D8A3F /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AB52B746221005D8A3F /* DateExt.swift */; };
+		B33C2ABE2B746523005D8A3F /* NavigationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ABB2B746523005D8A3F /* NavigationFactory.swift */; };
+		B33C2ABF2B746523005D8A3F /* NavigationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ABC2B746523005D8A3F /* NavigationFlow.swift */; };
+		B33C2AC02B746523005D8A3F /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ABD2B746523005D8A3F /* MainNavigationView.swift */; };
+		B33C2AC22B74661D005D8A3F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AC12B74661D005D8A3F /* MainView.swift */; };
+		B33C2AC52B746724005D8A3F /* PermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AC42B746724005D8A3F /* PermissionHandler.swift */; };
+		B33C2ACB2B746BF5005D8A3F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AC82B746BF5005D8A3F /* LoadingView.swift */; };
+		B33C2ACC2B746BF5005D8A3F /* ImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AC92B746BF5005D8A3F /* ImageExt.swift */; };
+		B33C2ACD2B746BF5005D8A3F /* ExpanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ACA2B746BF5005D8A3F /* ExpanderView.swift */; };
+		B33C2AD12B746E37005D8A3F /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ACF2B746E37005D8A3F /* VideoPlayerView.swift */; };
+		B33C2AD72B753BF5005D8A3F /* VideoRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AD62B753BF5005D8A3F /* VideoRecorderView.swift */; };
+		B33C2ADA2B753C35005D8A3F /* ImportedVideoProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2AD92B753C35005D8A3F /* ImportedVideoProcessView.swift */; };
+		B33C2ADC2B757220005D8A3F /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ADB2B757220005D8A3F /* GalleryView.swift */; };
+		D2DFC99F4899F4BEB64B5F0D /* Pods_TraceVisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822B8AD70059A72C7655F38B /* Pods_TraceVisionDemo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01001A73E278D73062089C45 /* Pods-TraceVisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		822B8AD70059A72C7655F38B /* Pods_TraceVisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraceVisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BE3A17BA7FF2509CB67380 /* Pods-TraceVisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.release.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B33C2A912B745917005D8A3F /* TraceVisionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraceVisionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceVisionDemoApp.swift; sourceTree = "<group>"; };
+		B33C2A962B745917005D8A3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B33C2A982B745918005D8A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B33C2A9B2B745918005D8A3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B33C2AA42B745F05005D8A3F /* TraceFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceFonts.swift; sourceTree = "<group>"; };
+		B33C2AA52B745F05005D8A3F /* TraceButtonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceButtonStyles.swift; sourceTree = "<group>"; };
+		B33C2AA62B745F05005D8A3F /* TraceColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceColors.swift; sourceTree = "<group>"; };
+		B33C2AAA2B745F40005D8A3F /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		B33C2AAD2B7460BB005D8A3F /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
+		B33C2AAF2B7460FC005D8A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B33C2AB12B746184005D8A3F /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		B33C2AB32B746221005D8A3F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B33C2AB42B746221005D8A3F /* ColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		B33C2AB52B746221005D8A3F /* DateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		B33C2ABB2B746523005D8A3F /* NavigationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFactory.swift; sourceTree = "<group>"; };
+		B33C2ABC2B746523005D8A3F /* NavigationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFlow.swift; sourceTree = "<group>"; };
+		B33C2ABD2B746523005D8A3F /* MainNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
+		B33C2AC12B74661D005D8A3F /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B33C2AC42B746724005D8A3F /* PermissionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionHandler.swift; sourceTree = "<group>"; };
+		B33C2AC82B746BF5005D8A3F /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B33C2AC92B746BF5005D8A3F /* ImageExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExt.swift; sourceTree = "<group>"; };
+		B33C2ACA2B746BF5005D8A3F /* ExpanderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpanderView.swift; sourceTree = "<group>"; };
+		B33C2ACF2B746E37005D8A3F /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		B33C2AD32B753AEA005D8A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B33C2AD62B753BF5005D8A3F /* VideoRecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderView.swift; sourceTree = "<group>"; };
+		B33C2AD92B753C35005D8A3F /* ImportedVideoProcessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportedVideoProcessView.swift; sourceTree = "<group>"; };
+		B33C2ADB2B757220005D8A3F /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B33C2A8E2B745917005D8A3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2DFC99F4899F4BEB64B5F0D /* Pods_TraceVisionDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		605F0B6B5BBDE99A83569816 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				822B8AD70059A72C7655F38B /* Pods_TraceVisionDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A27512D2E96225EB51AA3A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01001A73E278D73062089C45 /* Pods-TraceVisionDemo.debug.xcconfig */,
+				A3BE3A17BA7FF2509CB67380 /* Pods-TraceVisionDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B33C2A882B745917005D8A3F = {
+			isa = PBXGroup;
+			children = (
+				B33C2A932B745917005D8A3F /* TraceVisionDemo */,
+				B33C2A922B745917005D8A3F /* Products */,
+				7A27512D2E96225EB51AA3A0 /* Pods */,
+				605F0B6B5BBDE99A83569816 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B33C2A922B745917005D8A3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2A912B745917005D8A3F /* TraceVisionDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B33C2A932B745917005D8A3F /* TraceVisionDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AD32B753AEA005D8A3F /* Info.plist */,
+				B33C2AC32B746702005D8A3F /* service */,
+				B33C2ABA2B7464EC005D8A3F /* navigation */,
+				B33C2AB92B7464DA005D8A3F /* views */,
+				B33C2AA32B745E9C005D8A3F /* common */,
+				B33C2AA22B745E8B005D8A3F /* styles */,
+				B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */,
+				B33C2A962B745917005D8A3F /* ContentView.swift */,
+				B33C2A982B745918005D8A3F /* Assets.xcassets */,
+				B33C2A9A2B745918005D8A3F /* Preview Content */,
+				B33C2AAF2B7460FC005D8A3F /* AppDelegate.swift */,
+			);
+			path = TraceVisionDemo;
+			sourceTree = "<group>";
+		};
+		B33C2A9A2B745918005D8A3F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2A9B2B745918005D8A3F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B33C2AA22B745E8B005D8A3F /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AA52B745F05005D8A3F /* TraceButtonStyles.swift */,
+				B33C2AA62B745F05005D8A3F /* TraceColors.swift */,
+				B33C2AA42B745F05005D8A3F /* TraceFonts.swift */,
+			);
+			path = styles;
+			sourceTree = "<group>";
+		};
+		B33C2AA32B745E9C005D8A3F /* common */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AB42B746221005D8A3F /* ColorExt.swift */,
+				B33C2AB52B746221005D8A3F /* DateExt.swift */,
+				B33C2AB32B746221005D8A3F /* Utils.swift */,
+				B33C2AAC2B7460AB005D8A3F /* views */,
+				B33C2AAA2B745F40005D8A3F /* StringExt.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		B33C2AAC2B7460AB005D8A3F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2ACA2B746BF5005D8A3F /* ExpanderView.swift */,
+				B33C2AC92B746BF5005D8A3F /* ImageExt.swift */,
+				B33C2AC82B746BF5005D8A3F /* LoadingView.swift */,
+				B33C2AB12B746184005D8A3F /* Toast.swift */,
+				B33C2AAD2B7460BB005D8A3F /* ViewExt.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		B33C2AB92B7464DA005D8A3F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AD82B753C1B005D8A3F /* importing */,
+				B33C2AD52B753BCF005D8A3F /* recording */,
+				B33C2ACE2B746E05005D8A3F /* gallery */,
+				B33C2AC12B74661D005D8A3F /* MainView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		B33C2ABA2B7464EC005D8A3F /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2ABD2B746523005D8A3F /* MainNavigationView.swift */,
+				B33C2ABB2B746523005D8A3F /* NavigationFactory.swift */,
+				B33C2ABC2B746523005D8A3F /* NavigationFlow.swift */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		B33C2AC32B746702005D8A3F /* service */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AC42B746724005D8A3F /* PermissionHandler.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		B33C2ACE2B746E05005D8A3F /* gallery */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2ACF2B746E37005D8A3F /* VideoPlayerView.swift */,
+				B33C2ADB2B757220005D8A3F /* GalleryView.swift */,
+			);
+			path = gallery;
+			sourceTree = "<group>";
+		};
+		B33C2AD52B753BCF005D8A3F /* recording */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AD62B753BF5005D8A3F /* VideoRecorderView.swift */,
+			);
+			path = recording;
+			sourceTree = "<group>";
+		};
+		B33C2AD82B753C1B005D8A3F /* importing */ = {
+			isa = PBXGroup;
+			children = (
+				B33C2AD92B753C35005D8A3F /* ImportedVideoProcessView.swift */,
+			);
+			path = importing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B33C2A902B745917005D8A3F /* TraceVisionDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B33C2A9F2B745918005D8A3F /* Build configuration list for PBXNativeTarget "TraceVisionDemo" */;
+			buildPhases = (
+				F50C4747A66E6DB6BA710B4A /* [CP] Check Pods Manifest.lock */,
+				B33C2A8D2B745917005D8A3F /* Sources */,
+				B33C2A8E2B745917005D8A3F /* Frameworks */,
+				B33C2A8F2B745917005D8A3F /* Resources */,
+				B378AAEF2B75B4F900DDB575 /* ShellScript */,
+				9D3DE824ADB3981427205D97 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TraceVisionDemo;
+			productName = TraceVisionDemo;
+			productReference = B33C2A912B745917005D8A3F /* TraceVisionDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B33C2A892B745917005D8A3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					B33C2A902B745917005D8A3F = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = B33C2A8C2B745917005D8A3F /* Build configuration list for PBXProject "TraceVisionDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B33C2A882B745917005D8A3F;
+			productRefGroup = B33C2A922B745917005D8A3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B33C2A902B745917005D8A3F /* TraceVisionDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B33C2A8F2B745917005D8A3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33C2A9C2B745918005D8A3F /* Preview Assets.xcassets in Resources */,
+				B33C2A992B745918005D8A3F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D3DE824ADB3981427205D97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B378AAEF2B75B4F900DDB575 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho $TRACE_VISION_TOKEN\n\ndebugCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig\"\nreleaseCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig\"\n\nif ! grep \"TRACE_VISION_TOKEN\" \"$debugCfg\"; then \necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$debugCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$debugCfg\"\n\necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$releaseCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$releaseCfg\"\nfi\n\n";
+		};
+		F50C4747A66E6DB6BA710B4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TraceVisionDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B33C2A8D2B745917005D8A3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33C2AB02B7460FC005D8A3F /* AppDelegate.swift in Sources */,
+				B33C2A972B745917005D8A3F /* ContentView.swift in Sources */,
+				B33C2AA92B745F05005D8A3F /* TraceColors.swift in Sources */,
+				B33C2AA82B745F05005D8A3F /* TraceButtonStyles.swift in Sources */,
+				B33C2A952B745917005D8A3F /* TraceVisionDemoApp.swift in Sources */,
+				B33C2AB62B746222005D8A3F /* Utils.swift in Sources */,
+				B33C2AAE2B7460BB005D8A3F /* ViewExt.swift in Sources */,
+				B33C2AD72B753BF5005D8A3F /* VideoRecorderView.swift in Sources */,
+				B33C2ABF2B746523005D8A3F /* NavigationFlow.swift in Sources */,
+				B33C2AB72B746222005D8A3F /* ColorExt.swift in Sources */,
+				B33C2AC22B74661D005D8A3F /* MainView.swift in Sources */,
+				B33C2AAB2B745F40005D8A3F /* StringExt.swift in Sources */,
+				B33C2ACD2B746BF5005D8A3F /* ExpanderView.swift in Sources */,
+				B33C2ADA2B753C35005D8A3F /* ImportedVideoProcessView.swift in Sources */,
+				B33C2ABE2B746523005D8A3F /* NavigationFactory.swift in Sources */,
+				B33C2AB22B746184005D8A3F /* Toast.swift in Sources */,
+				B33C2ACC2B746BF5005D8A3F /* ImageExt.swift in Sources */,
+				B33C2AA72B745F05005D8A3F /* TraceFonts.swift in Sources */,
+				B33C2AC02B746523005D8A3F /* MainNavigationView.swift in Sources */,
+				B33C2AB82B746222005D8A3F /* DateExt.swift in Sources */,
+				B33C2AC52B746724005D8A3F /* PermissionHandler.swift in Sources */,
+				B33C2ACB2B746BF5005D8A3F /* LoadingView.swift in Sources */,
+				B33C2AD12B746E37005D8A3F /* VideoPlayerView.swift in Sources */,
+				B33C2ADC2B757220005D8A3F /* GalleryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B33C2A9D2B745918005D8A3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B33C2A9E2B745918005D8A3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B33C2AA02B745918005D8A3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01001A73E278D73062089C45 /* Pods-TraceVisionDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2024020701;
+				DEVELOPMENT_ASSET_PATHS = "\"TraceVisionDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = HKYVBK7K6X;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TraceVisionDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Trace Vision Demo";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to be able to record videos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone is requred to record videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to your Photos to save new highlights to your camera roll";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your Photos to save new highlights to your camera roll";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tracevision.TraceVisionDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B33C2AA12B745918005D8A3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3BE3A17BA7FF2509CB67380 /* Pods-TraceVisionDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2024020701;
+				DEVELOPMENT_ASSET_PATHS = "\"TraceVisionDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = HKYVBK7K6X;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TraceVisionDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Trace Vision Demo";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to be able to record videos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone is requred to record videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to your Photos to save new highlights to your camera roll";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your Photos to save new highlights to your camera roll";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tracevision.TraceVisionDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B33C2A8C2B745917005D8A3F /* Build configuration list for PBXProject "TraceVisionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B33C2A9D2B745918005D8A3F /* Debug */,
+				B33C2A9E2B745918005D8A3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B33C2A9F2B745918005D8A3F /* Build configuration list for PBXNativeTarget "TraceVisionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B33C2AA02B745918005D8A3F /* Debug */,
+				B33C2AA12B745918005D8A3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B33C2A892B745917005D8A3F /* Project object */;
+}
