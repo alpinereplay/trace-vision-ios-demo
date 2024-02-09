@@ -14,7 +14,7 @@ struct MainNavigationView: View {
     var body: some View {
         NavigationStack(path: $flow.path) {
             ZStack {
-                MainView()
+                MainView().traceDefaults()
             }.navigationDestination(for: NavigationParams.self) { dest in
                 NavigationFactory.shared.viewForDest(param: dest)
             }
