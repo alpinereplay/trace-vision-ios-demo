@@ -14,12 +14,20 @@ import AVFoundation
 struct VideoRecorderView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @StateObject
-    var session = ObservableWrapper(TraceVision.shared.createVideoRecordSession())
+    /// The session for video recording
+    ///
+    /// Should be passed as a parameter to the view. Need to be created just once even if the view is recreated due to other value changes
+    let session: VideoRecordSessionProtocol
     
+    /// The preview layer for the camera. 
+    ///
+    /// We set it in on `appear()` after the camera is initialized
     @State
     var previewLayer: AVCaptureVideoPreviewLayer? = nil
     
+    /// Observe the processing/recording status via this status object
+    ///
+    /// We connect it to the actual session in `appear()` when we initialize our session
     @StateObject
     var videoStatus: VideoRecorderStatus = VideoRecorderStatus()
     
@@ -31,12 +39,6 @@ struct VideoRecorderView: View {
     
     @State
     var initialZoom: CGFloat = 0
-    
-    @State
-    var thumbs: [String] = []
-    
-    @State
-    var animatingthumb: String? = nil
     
     @State
     var highlightsFound = 0
@@ -55,9 +57,9 @@ struct VideoRecorderView: View {
                             MagnificationGesture()
                                 .onChanged { delta in
                                     if initialZoom == 0 {
-                                        initialZoom = session.value.userFacingZoom
+                                        initialZoom = session.userFacingZoom
                                     }
-                                    session.value.setZoom(initialZoom * ((delta - 1) * 0.7 + 1))
+                                    session.setZoom(initialZoom * ((delta - 1) * 0.7 + 1))
                                 }
                                 .onEnded { _ in
                                     initialZoom = 0
@@ -71,7 +73,7 @@ struct VideoRecorderView: View {
                     ZStack {
                         HStack {
                             if videoStatus.processing == true {
-                                HighlightCountView(count: $highlightsFound).padding(.leading, 24)
+                                HighlightCountView(count: videoStatus.highlightsFound).padding(.leading, 24)
                             }
                             Spacer()
                             if videoStatus.processing != true {
@@ -92,9 +94,6 @@ struct VideoRecorderView: View {
                         HStack {
                             Spacer()
                             RecordTickerView(duration: $videoStatus.duration, isRecording: $videoStatus.processing)
-                                .onTapGesture {
-                                    addThumb()
-                                }
                             Spacer()
                         }
                     }.padding(.top, isVertical ? 0 : 20)
@@ -103,7 +102,7 @@ struct VideoRecorderView: View {
                 if isVertical {
                     VStack {
                         Spacer()
-                        ZoomControlsView(recorder: session.value, videoStatus: videoStatus, isVertical: true)
+                        ZoomControlsView(recorder: session, videoStatus: videoStatus, isVertical: true)
                             .padding(.bottom, 40)
                         Button(action: {
                             withAnimation {
@@ -122,7 +121,7 @@ struct VideoRecorderView: View {
                             Spacer()
                         }
                         Spacer()
-                        ZoomControlsView(recorder: session.value, videoStatus: videoStatus, isVertical: false)
+                        ZoomControlsView(recorder: session, videoStatus: videoStatus, isVertical: false)
                             .padding(.trailing, 40)
                         Button(action: {
                             toggleRecording()
@@ -133,12 +132,11 @@ struct VideoRecorderView: View {
                             .disabled(isTransitioning)
                     }.ignoresSafeArea()
                 }
-                AnimatingThumbView(thumb: animatingthumb)
             }
             .background(TraceColors.charcoalNormal50)
             .forceRotation(orientation: .allButUpsideDown)
             .onAppear() {
-                start()
+                startCamera()
             }
             .onDisappear() {
                 fullStop()
@@ -150,7 +148,7 @@ struct VideoRecorderView: View {
                     alog.debug("Inactive")
                 } else if newPhase == .background {
                     alog.debug("Background")
-                    session.value.stopRecording()
+                    session.stopRecording()
                 }
             }
             .onChange(of: videoStatus.processing) { val in
@@ -171,75 +169,53 @@ struct VideoRecorderView: View {
                 default:
                     videoO = .portrait
                 }
-                session.value.changeVideoOrientation(videoO)
+                session.changeVideoOrientation(videoO)
             }
             .toast($toast)
             .toolbar(.hidden)
         }
     }
     
-    func addThumb() {
-        thumbs.append("thumbnail_vertical")
-        postThumbProcess()
-    }
-    
-    @discardableResult
-    func postThumbProcess()->Bool {
-        if !thumbs.isEmpty && animatingthumb == nil {
-            withAnimation {
-                animatingthumb = thumbs.first
-            }
-            Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false) { _ in
-                withAnimation {
-                    animatingthumb = nil
-                }
-                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
-                    onThumbEnd()
-                }
-            }
-            return true
-        }
-        return false
-    }
-    
-    func onThumbEnd() {
-        highlightsFound += 1
-        thumbs.removeFirst()
-        postThumbProcess()
-    }
-    
-    func start() {
-        let recorder = session.value
+    /// Setup the camera, initialize it and get the preview layer
+    ///
+    /// Session will initialize the camera and start providing the live preview.
+    /// Actual recording won't start until `VideoRecordSessionProtocol.startRecording()` is called.
+    func startCamera() {
+        let recorder = session
+        // we set our own copy of the status object here to have direct updates from the session
         recorder.setStatusObject(videoStatus)
-        recorder.initVideoRecorder(orientation: .portrait)
+        recorder.initVideoRecorder(orientation: UIDevice.current.orientation == .portrait ? .portrait : .landscapeRight)
         previewLayer = recorder.previewLayer
     }
     
     func fullStop() {
-        session.value.stopVideoRecorder()
+        session.stopVideoRecorder()
     }
     
+    /// Toggle the actual recording on or off
     func toggleRecording() {
         isTransitioning = true
         if videoStatus.processing == true {
-            session.value.stopRecording()
-            if highlightsFound > 0 {
-                toast = Toast(icon: "checkmark", message: "\(highlightsFound) highlight\(highlightsFound>1 ? "s" : "") created from recording")
-                highlightsFound = 0
+            // Stop the video recording.
+            // Observe `videoStatus.processing` to become `false`
+            // then you'll know that it's fully stopped.
+            session.stopRecording()
+            if videoStatus.highlightsFound > 0 {
+                toast = Toast(icon: "checkmark", message: "\(videoStatus.highlightsFound) highlight\(highlightsFound>1 ? "s" : "") created from recording")
             }
         } else {
-            session.value.startRecording()
+            // Start the video recording and highlights detection on the fly.
+            session.startRecording()
         }
     }
 }
 
 #Preview {
-    VideoRecorderView().traceDefaults()
+    VideoRecorderView(session: TraceVision.shared.createVideoRecordSession()).traceDefaults()
 }
 
 struct HighlightCountView: View {
-    @Binding
-    var count: Int
+    let count: Int
     
     var body: some View {
         HStack {
@@ -251,6 +227,9 @@ struct HighlightCountView: View {
                 .foregroundStyle(TraceColors.whiteNeutral2)
                 .font(TraceFonts.body2sb)
         }
+        .padding(6)
+        .background(Color.black.opacity(0.4))
+        .cornerRadius(4)
     }
 }
 
@@ -358,30 +337,3 @@ struct ZoomControlsView: View {
     }
 }
 
-struct AnimatingThumbView: View {
-    let thumb: String?
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-            }
-            if let thumb = thumb {
-                Image(thumb).resizable().scaledToFill()
-                    .frame(width: 72, height: 72)
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 14)
-                            .stroke(TraceColors.whiteNeutral2, lineWidth: 2)
-                    }
-                    .padding(.leading, 16)
-                    .padding(.top, 60)
-                    .transition(.asymmetric(insertion: .offset(x: -88, y: 0),
-                                            removal: .scale(scale: 0.5, anchor: .topLeading)
-                        .combined(with: .offset(x: 15, y: -30).combined(with: .opacity))))
-            }
-            Spacer()
-        }
-    }
-}

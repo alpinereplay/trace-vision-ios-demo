@@ -137,6 +137,8 @@ struct MainView: View {
         ZStack {
             if loading {
                 VStack {
+                    Image("vision_logo")
+                        .padding(.bottom, 50)
                     LoadingView()
                 }
                 .padding(50)
@@ -151,11 +153,13 @@ struct MainView: View {
                         .blur(radius: actionChooserOpened ? 4.0 : 0)
                 }
             }
-            ActionButtonMenu(actionChooserOpened: $actionChooserOpened,
-                             showRecordPermissionAlert: $showRecordPermissionAlert,
-                             recordVideo: recordVideo,
-                             importVideo: importVideo,
-                                namespace: cellNamespace)
+            if sdk.isSDKInited == true && !loading {
+                ActionButtonMenu(actionChooserOpened: $actionChooserOpened,
+                                 showRecordPermissionAlert: $showRecordPermissionAlert,
+                                 recordVideo: recordVideo,
+                                 importVideo: importVideo,
+                                 namespace: cellNamespace)
+            }
         }
         .task {
             await loadHighlights()
@@ -227,7 +231,9 @@ struct MainView: View {
         
         if audioP == .Granted && videoP == .Granted {
             //Now we can go to recording screen
-            flow.navigate(dest: .videoRecorder)
+            flow.navigate(dest:
+                            NavigationParams(.videoRecorder)
+                .add(param: "session", value: TraceVision.shared.createVideoRecordSession(exportFullVideo: true)))
         }
     }
     

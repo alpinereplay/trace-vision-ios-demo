@@ -11,8 +11,13 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        ProgressView()
-            .progressViewStyle(CircularProgressViewStyle())
-            .scaleEffect(2, anchor: .center)
+        VStack {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .scaleEffect(2, anchor: .center)
+        }
+        .padding(24)
+        .background(Color.black.opacity(0.4))
+        .cornerRadius(16)
     }
 }

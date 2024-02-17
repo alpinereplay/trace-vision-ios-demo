@@ -19,7 +19,9 @@ class NavigationFactory {
         case .main:
             MainView()
         case .videoRecorder:
-            VideoRecorderView()
+            if let session = param.params["session"] as? VideoRecordSessionProtocol {
+                VideoRecorderView(session: session)
+            }
         case .importVideoProcessor:
             if let provider = param.params["provider"] as? NSItemProvider,
                let session = param.params["session"] as? VideoImportSessionProtocol {
@@ -31,9 +33,6 @@ class NavigationFactory {
             {
                 VideoPlayerView(items: items, initialIdx: idx)
             }
-
-            default:
-                EmptyView()
         }
     }
 }
