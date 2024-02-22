@@ -41,9 +41,6 @@ struct VideoRecorderView: View {
     var initialZoom: CGFloat = 0
     
     @State
-    var highlightsFound = 0
-    
-    @State
     var toast: Toast? = nil
     
     var body: some View {
@@ -78,7 +75,7 @@ struct VideoRecorderView: View {
                             Spacer()
                             if videoStatus.processing != true {
                                 Button(action: {
-                                    fullStop()
+                                    stopCamera()
                                     NavigationFlow.shared.backToRoot()
                                 }) {
                                     Image(systemName: "xmark").fontWeight(.bold)
@@ -139,7 +136,7 @@ struct VideoRecorderView: View {
                 startCamera()
             }
             .onDisappear() {
-                fullStop()
+                stopCamera()
             }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
@@ -158,18 +155,7 @@ struct VideoRecorderView: View {
                 isTransitioning = !val
             }
             .onDeviceRotation { orientation in
-                var videoO = AVCaptureVideoOrientation.portrait
-                switch orientation {
-                case .landscapeLeft:
-                    videoO = .landscapeRight
-                case .landscapeRight:
-                    videoO = .landscapeLeft
-                case .portraitUpsideDown:
-                    videoO = .portraitUpsideDown
-                default:
-                    videoO = .portrait
-                }
-                session.changeVideoOrientation(videoO)
+                session.changeVideoOrientation(device2cameraOrientation(orientation))
             }
             .toast($toast)
             .toolbar(.hidden)
@@ -184,11 +170,14 @@ struct VideoRecorderView: View {
         let recorder = session
         // we set our own copy of the status object here to have direct updates from the session
         recorder.setStatusObject(videoStatus)
-        recorder.initVideoRecorder(orientation: UIDevice.current.orientation == .portrait ? .portrait : .landscapeRight)
+        recorder.initVideoRecorder(orientation: device2cameraOrientation(UIDevice.current.orientation))
         previewLayer = recorder.previewLayer
     }
     
-    func fullStop() {
+    /// Completely stop using the camera, no more preview, all resources are freed.
+    ///
+    /// If this is called during active recordingthen it will first stop the recording and then shut the camera down.
+    func stopCamera() {
         session.stopVideoRecorder()
     }
     
@@ -201,12 +190,27 @@ struct VideoRecorderView: View {
             // then you'll know that it's fully stopped.
             session.stopRecording()
             if videoStatus.highlightsFound > 0 {
-                toast = Toast(icon: "checkmark", message: "\(videoStatus.highlightsFound) highlight\(highlightsFound>1 ? "s" : "") created from recording")
+                toast = Toast(icon: "checkmark", message: "\(videoStatus.highlightsFound) highlight\(videoStatus.highlightsFound > 1 ? "s" : "") created from recording")
             }
         } else {
             // Start the video recording and highlights detection on the fly.
             session.startRecording()
         }
+    }
+    
+    func device2cameraOrientation(_ orientation: UIDeviceOrientation) -> AVCaptureVideoOrientation {
+        var videoO = AVCaptureVideoOrientation.portrait
+        switch orientation {
+        case .landscapeLeft:
+            videoO = .landscapeRight
+        case .landscapeRight:
+            videoO = .landscapeLeft
+        case .portraitUpsideDown:
+            videoO = .portraitUpsideDown
+        default:
+            videoO = .portrait
+        }
+        return videoO
     }
 }
 
