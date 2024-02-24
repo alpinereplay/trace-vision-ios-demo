@@ -74,6 +74,7 @@ Here are several hints where to find the valuable code that uses the SDK
 [VideoPlayerView.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/VideoPlayerView.swift)
 
 - Using `HighlightVideoPlayer` to play the video from a list of highlights.
+- Saving/Exporting the highlight to the camera roll.
 
 Copyright (c) TraceVision, 2024
 
