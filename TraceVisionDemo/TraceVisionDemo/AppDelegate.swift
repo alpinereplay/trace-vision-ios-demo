@@ -49,6 +49,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         /// or just set them at the top of this file.
         var visionToken = Bundle.main.object(forInfoDictionaryKey: "VISION_TOKEN") as? String ?? VISION_TOKEN
         var visionSecret = Bundle.main.object(forInfoDictionaryKey: "VISION_SECRET") as? String ?? VISION_SECRET
+        visionToken = VISION_TOKEN
+        visionSecret = VISION_SECRET
         
         // Initialize TraceVision SDK with your token and secret
         // This should be done only once when the app is launched

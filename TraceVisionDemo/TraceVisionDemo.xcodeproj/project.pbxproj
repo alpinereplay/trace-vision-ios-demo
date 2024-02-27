@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B6CB93ED39D866B80183EB3 /* Pods_TraceVisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31090EDB47FB14A1CA420800 /* Pods_TraceVisionDemo.framework */; };
+		88D036B81B99906215C603DE /* Pods_TraceVisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC4F8542A4291ADC4342D15 /* Pods_TraceVisionDemo.framework */; };
 		B33C2A952B745917005D8A3F /* TraceVisionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */; };
 		B33C2A972B745917005D8A3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A962B745917005D8A3F /* ContentView.swift */; };
 		B33C2A992B745918005D8A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33C2A982B745918005D8A3F /* Assets.xcassets */; };
@@ -36,9 +36,22 @@
 		B33C2ADC2B757220005D8A3F /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2ADB2B757220005D8A3F /* GalleryView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B33579E02B8D2BFA00CBB8B0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		17730575F2AFDE049608DC20 /* Pods-TraceVisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.release.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig"; sourceTree = "<group>"; };
-		31090EDB47FB14A1CA420800 /* Pods_TraceVisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraceVisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DC4F8542A4291ADC4342D15 /* Pods_TraceVisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraceVisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9028B6D993A182FD91427ADD /* Pods-TraceVisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B33C2A912B745917005D8A3F /* TraceVisionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraceVisionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceVisionDemoApp.swift; sourceTree = "<group>"; };
 		B33C2A962B745917005D8A3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,7 +80,7 @@
 		B33C2AD62B753BF5005D8A3F /* VideoRecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderView.swift; sourceTree = "<group>"; };
 		B33C2AD92B753C35005D8A3F /* ImportedVideoProcessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportedVideoProcessView.swift; sourceTree = "<group>"; };
 		B33C2ADB2B757220005D8A3F /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
-		BADBBD8DC881B5E41B552C97 /* Pods-TraceVisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		F08293BFD0FF46DF7B609694 /* Pods-TraceVisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.release.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6CB93ED39D866B80183EB3 /* Pods_TraceVisionDemo.framework in Frameworks */,
+				88D036B81B99906215C603DE /* Pods_TraceVisionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +98,8 @@
 		7A27512D2E96225EB51AA3A0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BADBBD8DC881B5E41B552C97 /* Pods-TraceVisionDemo.debug.xcconfig */,
-				17730575F2AFDE049608DC20 /* Pods-TraceVisionDemo.release.xcconfig */,
+				9028B6D993A182FD91427ADD /* Pods-TraceVisionDemo.debug.xcconfig */,
+				F08293BFD0FF46DF7B609694 /* Pods-TraceVisionDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -97,7 +110,7 @@
 				B33C2A932B745917005D8A3F /* TraceVisionDemo */,
 				B33C2A922B745917005D8A3F /* Products */,
 				7A27512D2E96225EB51AA3A0 /* Pods */,
-				FB294E2DFFC99C7D81236646 /* Frameworks */,
+				D4A8E66BD19AA3F15F329772 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,10 +236,10 @@
 			path = importing;
 			sourceTree = "<group>";
 		};
-		FB294E2DFFC99C7D81236646 /* Frameworks */ = {
+		D4A8E66BD19AA3F15F329772 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				31090EDB47FB14A1CA420800 /* Pods_TraceVisionDemo.framework */,
+				7DC4F8542A4291ADC4342D15 /* Pods_TraceVisionDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,12 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B33C2A9F2B745918005D8A3F /* Build configuration list for PBXNativeTarget "TraceVisionDemo" */;
 			buildPhases = (
-				5E5BDEBCBEE5B9AE6572F679 /* [CP] Check Pods Manifest.lock */,
+				09C81BFCDC4C7597585ADA23 /* [CP] Check Pods Manifest.lock */,
 				B33C2A8D2B745917005D8A3F /* Sources */,
 				B33C2A8E2B745917005D8A3F /* Frameworks */,
 				B33C2A8F2B745917005D8A3F /* Resources */,
 				B378AAEF2B75B4F900DDB575 /* ShellScript */,
-				D15EAC9CDE439D68485D2146 /* [CP] Embed Pods Frameworks */,
+				B33579E02B8D2BFA00CBB8B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,7 +313,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5E5BDEBCBEE5B9AE6572F679 /* [CP] Check Pods Manifest.lock */ = {
+		09C81BFCDC4C7597585ADA23 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -339,23 +352,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho $TRACE_VISION_TOKEN\n\ndebugCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig\"\nreleaseCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig\"\n\nif ! grep \"TRACE_VISION_TOKEN\" \"$debugCfg\"; then \necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$debugCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$debugCfg\"\n\necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$releaseCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$releaseCfg\"\nfi\n\n";
-		};
-		D15EAC9CDE439D68485D2146 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -515,7 +511,7 @@
 		};
 		B33C2AA02B745918005D8A3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BADBBD8DC881B5E41B552C97 /* Pods-TraceVisionDemo.debug.xcconfig */;
+			baseConfigurationReference = 9028B6D993A182FD91427ADD /* Pods-TraceVisionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -555,7 +551,7 @@
 		};
 		B33C2AA12B745918005D8A3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17730575F2AFDE049608DC20 /* Pods-TraceVisionDemo.release.xcconfig */;
+			baseConfigurationReference = F08293BFD0FF46DF7B609694 /* Pods-TraceVisionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

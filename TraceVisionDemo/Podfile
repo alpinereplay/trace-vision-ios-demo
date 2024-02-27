@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '15.0'
+
+target 'TraceVisionDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TraceVisionDemo
+  # pod 'GRDB.swift', '6.23.0'
+  # pod 'TraceVisionSDK', :path => '../../trace-vision-ios-sdk/TraceVisionSDK'
+end
+
