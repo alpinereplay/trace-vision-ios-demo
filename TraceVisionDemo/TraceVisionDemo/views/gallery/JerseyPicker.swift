@@ -57,7 +57,7 @@ struct JerseyPicker: View {
                                 .stroke(TraceColors.tealNormal30, lineWidth: 2))
                         }
                         .padding(.horizontal, 32)
-                        .padding(.vertical, 16)
+                        .padding(.vertical, 10)
                         .onTapGesture {
                             withAnimation { toggle(i) }
                         }

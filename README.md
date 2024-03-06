@@ -66,10 +66,19 @@ Here are several hints where to find the valuable code that uses the SDK
 - Updating the number of highlights found on the fly.
 - Stopping the recording and the camera.
 
-[GalleryView.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/GalleryView.swift)
+[HighlightGallery.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/HighlightGallery.swift)
 
 - Loading a list of saved highlights.
+- Using filters to get the highlights according to the user choice.
+
+[GalleryView.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/GalleryView.swift)
+
 - Getting and displaying highlight thumbnails.
+
+[JersetPicker.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/JerseyPicker.swift)
+
+- Getting a list of available jersey numbers from the saved highlights.
+- Selecting multiple and setting the filters for the list of highlights (in HighlightGallery).
 
 [VideoPlayerView.swift](TraceVisionDemo/TraceVisionDemo/views/gallery/VideoPlayerView.swift)
 

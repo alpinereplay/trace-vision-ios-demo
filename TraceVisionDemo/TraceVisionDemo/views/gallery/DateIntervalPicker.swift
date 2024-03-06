@@ -34,21 +34,26 @@ struct DateIntervalPicker: View {
                     .font(TraceFonts.htitle3d)
                     .padding(.top, 16)
                 ForEach(DateIntervalPicker.DATE_PICKER_VALUES.keys.sorted(), id: \.self) { key in
-                    Button(role: .cancel, action: {
-                        setDates(key: key)
-                        pickerOpened = false
-                    }) {
-                        HStack {
-                            Text((DateIntervalPicker.DATE_PICKER_VALUES[key] ?? ("", "")).0)
-                            Spacer()
+                    HStack {
+                        Text((DateIntervalPicker.DATE_PICKER_VALUES[key] ?? ("", "")).0)
+                            .font(TraceFonts.body1sb)
+                        Spacer()
+                        ZStack {
                             if key == dateString {
                                 Image(systemName: "checkmark")
+                                    .fontWeight(.bold)
                             }
                         }
+                        .frame(width: 32, height: 32)
+                        .background(RoundedRectangle(cornerRadius: 6)
+                            .stroke(TraceColors.tealNormal30, lineWidth: 2))
                     }
-                    .buttonStyle(MainButtonStyle())
-                    .padding(.vertical, 8)
                     .padding(.horizontal, 32)
+                    .padding(.vertical, 10)
+                    .onTapGesture {
+                        setDates(key: key)
+                        pickerOpened = false
+                    }
                 }
             }
         }

@@ -127,7 +127,7 @@ struct FiltersView: View {
         .padding(.horizontal, 32)
         .sheet(isPresented: $datePickerOpened) {
             DateIntervalPicker(dateFilter: $dateFilter, dateString: $dateString, pickerOpened: $datePickerOpened)
-                .traceDefaults().presentationDetents([.height(300)])
+                .traceDefaults().presentationDetents([.height(370)])
         }
         .sheet(isPresented: $jnPickerOpened) {
             JerseyPicker(reader: reader, jnFilter: $jnFilter, pickerOpened: $jnPickerOpened)
