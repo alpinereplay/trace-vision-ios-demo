@@ -181,8 +181,17 @@ struct VideoRecorderView: View {
         session.stopVideoRecorder()
     }
     
+    @State
+    var lastClicked: Date = Date()
+    
     /// Toggle the actual recording on or off
     func toggleRecording() {
+        // Prevent double taps and such
+        let now = Date()
+        if now.timeIntervalSince(lastClicked) < 1 || isTransitioning {
+            return
+        }
+        lastClicked = now
         isTransitioning = true
         if videoStatus.processing == true {
             // Stop the video recording.
