@@ -10,102 +10,7 @@ import Foundation
 import SwiftUI
 import TraceVisionSDK
 
-struct ActionButtonMenu: View {
-    @Binding
-    var actionChooserOpened: Bool
-    
-    @Binding
-    var showRecordPermissionAlert: Bool
-    
-    var recordVideo: ()->Void
-    
-    var importVideo: (NSItemProvider?)->Void
-        
-    @State
-    var isVideoPickerShown = false
-    
-    let namespace: Namespace.ID
-    
-    var body: some View {
-        if actionChooserOpened {
-            Color(.white)
-                .opacity(0.75)
-                .onTapGesture {
-                withAnimation {
-                    actionChooserOpened = false
-                }
-            }
-        }
-        VStack(alignment: .trailing) {
-            HStack {
-                Spacer()
-            }
-            Spacer()
-            if actionChooserOpened {
-                recorderButton()
-                uploadButton()
-            }
-            Button(action: {
-                withAnimation {
-                    actionChooserOpened = !actionChooserOpened
-                }
-            }) {
-                withAnimation {
-                    Image(systemName: "plus")
-                        .font(Font.system(size: 24, weight: .bold))
-                        .rotationEffect(.degrees(actionChooserOpened ? -45 : 0))
-                }
-            }
-            .buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true))
-            .matchedGeometryEffect(id: "button", in: namespace)
-        }
-        .padding(.bottom, 32).padding(.horizontal, 32)
-    }
-    
-    func recorderButton() -> some View {
-        HStack {
-            Text("Record a new video").font(TraceFonts.body1r)
-                .padding(6)
-            Button(role: .cancel, action: {recordVideo()}) {
-                Image(systemName: "video")
-                    .font(Font.system(size: 24, weight: .bold))
-            }.buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true, desiredBackColor: TraceColors.greenNormal1, desiredFrontColor: TraceColors.charcoalNormal50))
-                .alert("Permissions required", isPresented: $showRecordPermissionAlert, actions: {
-                    Button("Open Settings", role: .none) {
-                        PermissionHandler.shared.openSettings()
-                        showRecordPermissionAlert = false
-                    }
-                    Button("Cancel", role: .cancel) {
-                        showRecordPermissionAlert = false
-                    }
-                }, message: {
-                    Text("Video recorder requires access to camera and microphone. Please open Settings and grant the missing access.")
-                })
-        }
-        .transition(.offset(x: 0, y: 124).combined(with: .opacity))
-    }
-    
-    func uploadButton() -> some View {
-        HStack {
-            Text("Upload video from photos").font(TraceFonts.body1r)
-                .padding(6)
-            Button(role: .none, action: {isVideoPickerShown = true}) {
-                Image(systemName: "square.and.arrow.down")
-                    .font(Font.system(size: 24, weight: .bold))
-            }.buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true, desiredBackColor: TraceColors.blueNormal1, desiredFrontColor: TraceColors.charcoalNormal50))
-                .sheet(isPresented: $isVideoPickerShown) {
-                    VideoPickerView() { provider in
-                        isVideoPickerShown = false
-                        if let provider = provider {
-                            importVideo(provider)
-                        }
-                    }
-                }
-        }
-        .transition(.offset(x: 0, y: 71).combined(with: .opacity))
-    }
-}
-
+/// Main view of the app
 struct MainView: View {
     @ObservedObject
     var flow = NavigationFlow.shared
@@ -117,12 +22,6 @@ struct MainView: View {
     var showRecordPermissionAlert = false
     
     @State
-    var items = [HighlightObject]()
-    
-    @State
-    var selectedIdx: Int?
-    
-    @State
     var loading = true
     
     @Namespace var cellNamespace
@@ -131,7 +30,7 @@ struct MainView: View {
     var sdk = TraceVision.shared
     
     @State
-    var emptyText = "No highlights detected.\nPlease click '+' button to start your journey."
+    var emptyText = ""
     
     var mainView: some View {
         ZStack {
@@ -143,26 +42,21 @@ struct MainView: View {
                 }
                 .padding(50)
             } else {
-                if items.isEmpty {
+                if !emptyText.isEmpty {
                     VStack {
                         Text(emptyText).font(TraceFonts.htitle4b)
                     }
                     .padding(50)
                 } else {
-                    GalleryView(items: items, selectedItemIdx: $selectedIdx)
+                    HighlightsGallery()
                         .blur(radius: actionChooserOpened ? 4.0 : 0)
+                    ActionButtonMenu(actionChooserOpened: $actionChooserOpened,
+                                     showRecordPermissionAlert: $showRecordPermissionAlert,
+                                     recordVideo: recordVideo,
+                                     importVideo: importVideo,
+                                     namespace: cellNamespace)
                 }
             }
-            if sdk.isSDKInited == true && !loading {
-                ActionButtonMenu(actionChooserOpened: $actionChooserOpened,
-                                 showRecordPermissionAlert: $showRecordPermissionAlert,
-                                 recordVideo: recordVideo,
-                                 importVideo: importVideo,
-                                 namespace: cellNamespace)
-            }
-        }
-        .task {
-            await loadHighlights()
         }
     }
     
@@ -172,45 +66,23 @@ struct MainView: View {
             mainView
         }
         .ignoresSafeArea()
-        .onAppear {
-            selectedIdx = nil
-        }
+        // listen to SDK inited state
         .onChange(of: sdk.isSDKInited, perform: checkSDKReady)
-        .onChange(of: selectedIdx) { idx in
-            if let idx = idx, !items.isEmpty {
-                NavigationFlow.shared.navigate(dest:
-                                                NavigationParams(.videoPlayer)
-                    .add(param: "items", value: items)
-                    .add(param: "index", value: idx))
-            }
-        }
     }
     
+    /// Check if SDK is ready and set loading flag and error message accordingly
     func checkSDKReady(isReady: Bool?) {
         alog.debug("SDK inited: \(isReady == nil ? "NULL" : String(isReady!) )")
         if isReady == true {
-            Task {
-                await loadHighlights()
-            }
+            loading = false
         }
         if isReady == false {
-            withAnimation {
-                items = []
-                emptyText = "Error: SDK is not properly initialized.\nPlease check your internet connection and consumer key/secret pair.\nRestart the app to try again."
-                loading = false
-            }
+            emptyText = "Error: SDK is not properly initialized.\nPlease check your internet connection and consumer key/secret pair.\nRestart the app to try again."
+            loading = false
         }
     }
     
-    func loadHighlights() async {
-        if TraceVision.shared.isSDKInited == true {
-            items = await TraceVision.shared.getHighlightReader().highlightsByGroup("--")
-            withAnimation {
-                loading = false
-            }
-        }
-    }
-    
+    /// Record video action. Checks permissions and navigates to the video recorder
     func recordVideo() {
         let audioP = PermissionHandler.shared.audioPermissionState()
         let videoP = PermissionHandler.shared.videoPermissionState()
@@ -237,6 +109,7 @@ struct MainView: View {
         }
     }
     
+    /// Import video action with the chosed video via provider. Navigates to the video import screen
     func importVideo(provider: NSItemProvider?) {
         actionChooserOpened = false
         NavigationFlow.shared.navigate(dest:
@@ -249,4 +122,105 @@ struct MainView: View {
 
 #Preview {
     MainView().traceDefaults()
+}
+
+/// The ActionButtonMenu struct is a SwiftUI view designed to offer users a choice between recording a new video or uploading a video from their photos.
+struct ActionButtonMenu: View {
+    @Binding
+    var actionChooserOpened: Bool
+    
+    @Binding
+    var showRecordPermissionAlert: Bool
+    
+    /// A closure that gets called when the user decides to record a new video. This action is triggered by a button within the view.
+    var recordVideo: ()->Void
+    
+    /// A closure that is called with an optional NSItemProvider argument when the user chooses to upload a video. This allows for the importation of video content from the user's photo library.
+    var importVideo: (NSItemProvider?)->Void
+        
+    @State
+    var isVideoPickerShown = false
+    
+    let namespace: Namespace.ID
+    
+    var body: some View {
+        if actionChooserOpened {
+            Color(.white)
+                .opacity(0.75)
+                .onTapGesture {
+                withAnimation {
+                    actionChooserOpened = false
+                }
+            }
+        }
+        VStack(alignment: .trailing) {
+            Spacer()
+            if actionChooserOpened {
+                recorderButton()
+                uploadButton()
+            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        actionChooserOpened = !actionChooserOpened
+                    }
+                }) {
+                    withAnimation {
+                        Image(systemName: "plus")
+                            .font(Font.system(size: 24, weight: .bold))
+                            .rotationEffect(.degrees(actionChooserOpened ? -45 : 0))
+                    }
+                }
+                .buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true))
+            }
+        }
+        .padding(.bottom, 32).padding(.horizontal, 32)
+    }
+    
+    /// Returns a view for the button that initiates video recording. It includes text and an icon, styled distinctly to indicate the action. This button also manages the display of an alert for permission requirements if necessary.
+    func recorderButton() -> some View {
+        HStack {
+            Text("Record a new video").font(TraceFonts.body1r)
+                .padding(6)
+            Button(role: .cancel, action: {recordVideo()}) {
+                Image(systemName: "video")
+                    .font(Font.system(size: 24, weight: .bold))
+            }.buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true, desiredBackColor: TraceColors.greenNormal1, desiredFrontColor: TraceColors.charcoalNormal50))
+                .alert("Permissions required", isPresented: $showRecordPermissionAlert, actions: {
+                    Button("Open Settings", role: .none) {
+                        PermissionHandler.shared.openSettings()
+                        showRecordPermissionAlert = false
+                    }
+                    Button("Cancel", role: .cancel) {
+                        showRecordPermissionAlert = false
+                    }
+                }, message: {
+                    Text("Video recorder requires access to camera and microphone. Please open Settings and grant the missing access.")
+                })
+        }
+        .transition(.offset(x: 0, y: 124).combined(with: .opacity))
+    }
+    
+    /// Returns a view for the button that opens the video picker for uploading a video from the user's photos. It similarly includes text and an icon, with styling that differentiates it from the recorder button. The upload action triggers the presentation of a VideoPickerView.
+    func uploadButton() -> some View {
+        HStack {
+            Text("Upload video from photos").font(TraceFonts.body1r)
+                .padding(6)
+            Button(role: .none, action: {isVideoPickerShown = true}) {
+                Image(systemName: "square.and.arrow.down")
+                    .font(Font.system(size: 24, weight: .bold))
+            }.buttonStyle(MainButtonStyle(paddingSides: 64, paddingVertical: 64, circle: true, desiredBackColor: TraceColors.blueNormal1, desiredFrontColor: TraceColors.charcoalNormal50))
+                .sheet(isPresented: $isVideoPickerShown) {
+                    /// Open the video picker
+                    VideoPickerView() { provider in
+                        isVideoPickerShown = false
+                        if let provider = provider {
+                            importVideo(provider)
+                        }
+                    }
+                }
+        }
+        .transition(.offset(x: 0, y: 71).combined(with: .opacity))
+    }
 }

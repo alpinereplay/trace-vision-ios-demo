@@ -6,7 +6,6 @@ target 'TraceVisionDemo' do
   use_frameworks!
 
   # Pods for TraceVisionDemo
-  # pod 'GRDB.swift', '6.23.0'
   # pod 'TraceVisionSDK', :path => '../../trace-vision-ios-sdk/TraceVisionSDK'
 end
 
