@@ -32,6 +32,12 @@ struct GalleryView: View {
     }
 }
 
+let cardDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "M/d/yy"
+    return formatter
+}()
+
 /// Gird card that shows the highlight thumbnail
 struct HighlightCard: View {
     
@@ -50,15 +56,34 @@ struct HighlightCard: View {
                     .frame(width: geom.size.width, height: geom.size.height)
                     .clipped()
             }
-            // Jersey number is displayed in the bottom right corner
-            // if it was detected in the highlight
-            if let jerseyNumber = content.jerseyNumber {
-                Text("#\(jerseyNumber)")
+            
+            HStack(alignment: .top, content: {
+                // Date when the highlight was recorder is displayed in the top left corner
+                Text("\(cardDateFormatter.string(from: content.dateRecorded))")
                     .foregroundStyle(.white.opacity(0.6))
-                    .font(TraceFonts.body1b)
-                    .padding(.trailing, 8)
-                    .padding(.bottom, 8)
-            }
+                    .font(TraceFonts.body2sb)
+                    .padding(3)
+                    .background(RoundedRectangle(cornerRadius: 4).fill(Color.black).opacity(0.2))
+                    .padding(6)
+                Expander()
+            })
+            
+            HStack {
+                // Jersey number is displayed in the bottom right corner
+                // if it was detected in the highlight
+                if let jerseyNumber = content.jerseyNumber {
+                    Text("#\(jerseyNumber)")
+                        .foregroundStyle(.white.opacity(0.6))
+                        .font(TraceFonts.body1b)
+                }
+                // Show a colored circle according to the highlight group, convert group to color.
+                // The group prop has the same value for highlights processed in the same session.
+                if content.group.count > 5 {
+                    Circle().fill(content.group.substring(to: 5).color().opacity(0.75))
+                        .frame(width: 12, height: 12)
+                        .overlay(Circle().stroke(Color.white).opacity(0.8))
+                }
+            }.padding(8)
         }
     }
 }
