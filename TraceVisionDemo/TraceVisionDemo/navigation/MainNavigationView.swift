@@ -18,8 +18,7 @@ struct MainNavigationView: View {
             }.navigationDestination(for: NavigationParams.self) { dest in
                 NavigationFactory.shared.viewForDest(param: dest)
             }
-        }.forceRotation(orientation: .portrait)
-            .navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -24,26 +24,6 @@ struct ViewDidLoadModifier: ViewModifier {
     }
 }
 
-struct ViewForceOrientationModifier: ViewModifier {
-    let newOrientation: UIInterfaceOrientationMask
-    @State
-    var previousOrientation = AppDelegate.orientationLock
-    
-    init(newOrientation: UIInterfaceOrientationMask) {
-        self.newOrientation = newOrientation
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onAppear() {
-                previousOrientation = AppDelegate.orientationLock
-                AppDelegate.orientationLock = newOrientation
-            }.onDisappear() {
-                AppDelegate.orientationLock = previousOrientation
-            }
-    }
-}
-
 struct DeviceRotationViewModifier: ViewModifier {
     let action: (UIDeviceOrientation) -> Void
 
@@ -57,15 +37,6 @@ struct DeviceRotationViewModifier: ViewModifier {
 }
 
 extension View {
-    @ViewBuilder
-    func forceRotation(orientation: UIInterfaceOrientationMask) -> some View {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            self.modifier(ViewForceOrientationModifier(newOrientation: orientation))
-        } else {
-            self
-        }
-    }
-    
     func onViewDidLoad(perform action: (() -> Void)? = nil) -> some View {
         self.modifier(ViewDidLoadModifier(action: action))
     }
