@@ -131,7 +131,6 @@ struct VideoRecorderView: View {
                 }
             }
             .background(TraceColors.charcoalNormal50)
-            .forceRotation(orientation: .allButUpsideDown)
             .onAppear() {
                 startCamera()
             }

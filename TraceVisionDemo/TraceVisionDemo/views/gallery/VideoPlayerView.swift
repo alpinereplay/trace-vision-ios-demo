@@ -12,16 +12,25 @@ import AVFoundation
 import TraceVisionSDK
 import SwiftUI
 
+/// View for playing  a list of video highlights
 struct VideoPlayerView: View {
+    
+    /// Highlight Video player
     @State
     var player: HighlightVideoPlayer?
     
-    var items: [HighlightObject]
+    /// list of highlights
+    let items: [HighlightObject]
 
+    /// Current index we are playing, points to the `items` entry
     let initialIdx: Int
     
     @State
     var toast: Toast? = nil
+    
+    /// Export video crop format. It changes with the screen geometry.
+    @State
+    var cropFormat: HighlightCropFormat = .squared
     
     var closeBar: some View {
         HStack {
@@ -56,7 +65,7 @@ struct VideoPlayerView: View {
         ZStack {
             Expander()
             GeometryReader { geom in
-                VideoPlayerPreview(player: player, visibleSize: geom.size)
+                videoPlayer(for: geom)
             }
             .zIndex(0)
             .onSwipe(up: { value in
@@ -93,6 +102,21 @@ struct VideoPlayerView: View {
         .toast($toast)
         .toolbar(.hidden)
     }
+
+    func videoPlayer(for geom: GeometryProxy)-> some View {
+        // Adjust crop format based on the screen geometry
+        if geom.size.height > geom.size.width && cropFormat != .portrait {
+            onMain {
+                cropFormat = .portrait
+            }
+        } else if geom.size.height < geom.size.width && cropFormat != .landscape {
+            onMain {
+                cropFormat = .landscape
+            }
+        }
+        
+        return VideoPlayerPreview(player: player, visibleSize: geom.size)
+    }
     
     func close() {
         NavigationFlow.shared.backToRoot()
@@ -102,7 +126,8 @@ struct VideoPlayerView: View {
         guard let highlight = player?.currentHighlight else { return }
         toast = Toast(icon: "square.and.arrow.down", message: "Saving highlight....")
         Task.init {
-            if await highlight.saveVideo(toCameraRoll: true) != nil {
+            // Save the highlights in the desired format to the camera roll
+            if await highlight.saveVideo(toCameraRoll: true, cropFormat: cropFormat, debug: true) != nil {
                 toast = Toast(icon: "checkmark.square", message: "Saved to Camera Roll")
             } else {
                 toast = Toast(icon: "exclamationmark.triangle", message: "Something went wrong.",

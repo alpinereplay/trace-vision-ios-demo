@@ -12,7 +12,7 @@ import TraceVisionSDK
 
 /// Simple multicolumn gallery view based on LazyVGrid
 struct GalleryView: View {
-    var items: [HighlightObject]
+    let items: [HighlightObject]
 
     @Binding
     var selectedItemIdx: Int?
@@ -48,14 +48,16 @@ struct HighlightCard: View {
             Rectangle()
                 .fill(TraceColors.charcoalNormal10)
                 .aspectRatio(1, contentMode: .fit)
-            GeometryReader { geom in
-                // Image is loaded from local storage using `HighlightObject.thumbnailURL`
-                Image(local: content.thumbnailURL)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: geom.size.width, height: geom.size.height)
-                    .clipped()
-            }
+                .overlay {
+                    Image(local: content.thumbnailURL)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(minHeight: 0, maxHeight: .infinity)
+                        .aspectRatio(1, contentMode: .fill)
+                        .clipped()
+                }
+                .contentShape(Rectangle())
             
             HStack(alignment: .top, content: {
                 // Date when the highlight was recorder is displayed in the top left corner
