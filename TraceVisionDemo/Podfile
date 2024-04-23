@@ -6,6 +6,5 @@ target 'TraceVisionDemo' do
   use_frameworks!
 
   # Pods for TraceVisionDemo
-  # pod 'TraceVisionSDK', :path => '../../trace-vision-ios-sdk/TraceVisionSDK'
+   pod 'TraceVisionSDK', :path => '../../trace-vision-ios-sdk/TraceVisionSDK'
 end
-
