@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0399E25FB31E1B39B9D033A5 /* Pods_TraceVisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5676E106786404F70F0053 /* Pods_TraceVisionDemo.framework */; };
+		B118D962A134A783C5D46416 /* Pods_TraceVisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 885008709049A1849498A7AE /* Pods_TraceVisionDemo.framework */; };
 		B33C2A952B745917005D8A3F /* TraceVisionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */; };
 		B33C2A972B745917005D8A3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C2A962B745917005D8A3F /* ContentView.swift */; };
 		B33C2A992B745918005D8A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33C2A982B745918005D8A3F /* Assets.xcassets */; };
@@ -54,9 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03F420658CFE88352EA7C9A7 /* Pods-TraceVisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.release.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig"; sourceTree = "<group>"; };
-		AAB54BBFE1F71651C594194D /* Pods-TraceVisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		AF5676E106786404F70F0053 /* Pods_TraceVisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraceVisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		885008709049A1849498A7AE /* Pods_TraceVisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraceVisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C2A912B745917005D8A3F /* TraceVisionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraceVisionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C2A942B745917005D8A3F /* TraceVisionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceVisionDemoApp.swift; sourceTree = "<group>"; };
 		B33C2A962B745917005D8A3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		B372ED102B97F8C100F395CA /* JerseyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JerseyPicker.swift; sourceTree = "<group>"; };
 		B372ED122B97FBAD00F395CA /* DateIntervalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIntervalPicker.swift; sourceTree = "<group>"; };
 		B372ED142B97FC3B00F395CA /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		BAF2EAD8627C78CFF5A3F436 /* Pods-TraceVisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D15379FF0F9B5A0CE91BD8FB /* Pods-TraceVisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraceVisionDemo.release.xcconfig"; path = "Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,17 +96,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0399E25FB31E1B39B9D033A5 /* Pods_TraceVisionDemo.framework in Frameworks */,
+				B118D962A134A783C5D46416 /* Pods_TraceVisionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		669E8E798250923D2BCB5C44 /* Frameworks */ = {
+		1FC76C1F14601B793A59D222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AF5676E106786404F70F0053 /* Pods_TraceVisionDemo.framework */,
+				885008709049A1849498A7AE /* Pods_TraceVisionDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,8 +114,8 @@
 		7A27512D2E96225EB51AA3A0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AAB54BBFE1F71651C594194D /* Pods-TraceVisionDemo.debug.xcconfig */,
-				03F420658CFE88352EA7C9A7 /* Pods-TraceVisionDemo.release.xcconfig */,
+				BAF2EAD8627C78CFF5A3F436 /* Pods-TraceVisionDemo.debug.xcconfig */,
+				D15379FF0F9B5A0CE91BD8FB /* Pods-TraceVisionDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -126,7 +126,7 @@
 				B33C2A932B745917005D8A3F /* TraceVisionDemo */,
 				B33C2A922B745917005D8A3F /* Products */,
 				7A27512D2E96225EB51AA3A0 /* Pods */,
-				669E8E798250923D2BCB5C44 /* Frameworks */,
+				1FC76C1F14601B793A59D222 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -263,13 +263,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B33C2A9F2B745918005D8A3F /* Build configuration list for PBXNativeTarget "TraceVisionDemo" */;
 			buildPhases = (
-				25160CB6AC3023D9D772523C /* [CP] Check Pods Manifest.lock */,
+				F6E63138EACE9F601950EF80 /* [CP] Check Pods Manifest.lock */,
 				B33C2A8D2B745917005D8A3F /* Sources */,
 				B33C2A8E2B745917005D8A3F /* Frameworks */,
 				B33C2A8F2B745917005D8A3F /* Resources */,
 				B378AAEF2B75B4F900DDB575 /* ShellScript */,
 				B33579E02B8D2BFA00CBB8B0 /* Embed Frameworks */,
-				0686AF85F14B47F5439B1BE9 /* [CP] Embed Pods Frameworks */,
+				BCAB01897C1DCCA41A9A08B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,7 +326,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0686AF85F14B47F5439B1BE9 /* [CP] Embed Pods Frameworks */ = {
+		B378AAEF2B75B4F900DDB575 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho $TRACE_VISION_TOKEN\n\ndebugCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig\"\nreleaseCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig\"\n\nif ! grep \"TRACE_VISION_TOKEN\" \"$debugCfg\"; then \necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$debugCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$debugCfg\"\n\necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$releaseCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$releaseCfg\"\nfi\n\n";
+		};
+		BCAB01897C1DCCA41A9A08B5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,7 +361,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		25160CB6AC3023D9D772523C /* [CP] Check Pods Manifest.lock */ = {
+		F6E63138EACE9F601950EF80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,24 +382,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B378AAEF2B75B4F900DDB575 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho $TRACE_VISION_TOKEN\n\ndebugCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.debug.xcconfig\"\nreleaseCfg=\"${SRCROOT}/Pods/Target Support Files/Pods-TraceVisionDemo/Pods-TraceVisionDemo.release.xcconfig\"\n\nif ! grep \"TRACE_VISION_TOKEN\" \"$debugCfg\"; then \necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$debugCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$debugCfg\"\n\necho \"TRACE_VISION_TOKEN = $TRACE_VISION_TOKEN\" >>\"$releaseCfg\"\necho \"TRACE_VISION_SECRET = $TRACE_VISION_SECRET\" >>\"$releaseCfg\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -547,7 +547,7 @@
 		};
 		B33C2AA02B745918005D8A3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAB54BBFE1F71651C594194D /* Pods-TraceVisionDemo.debug.xcconfig */;
+			baseConfigurationReference = BAF2EAD8627C78CFF5A3F436 /* Pods-TraceVisionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -558,18 +558,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp/Eigen\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp/Eigen\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp/Eigen\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp/Eigen\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp\"/**",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraceVisionDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Trace Vision Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
@@ -594,12 +583,13 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		B33C2AA12B745918005D8A3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03F420658CFE88352EA7C9A7 /* Pods-TraceVisionDemo.release.xcconfig */;
+			baseConfigurationReference = D15379FF0F9B5A0CE91BD8FB /* Pods-TraceVisionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -610,18 +600,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp/Eigen\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp/Eigen\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp/Eigen\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/cpp/Eigen\"/**",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/TraceVisionSDK/TraceVisionSDK/cpp\"/**",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraceVisionDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Trace Vision Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
@@ -645,6 +624,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
